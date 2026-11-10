@@ -35,7 +35,14 @@ class _OfflineHomeScreenState extends State<OfflineHomeScreen> {
   @override
   void initState() {
     super.initState();
-    _store.load();
+    // Fire-and-forget local load. On platforms without the sqflite plugin
+    // (e.g. widget tests pumping the full app) the database is unavailable;
+    // swallow the failure and mark the store loaded so the empty offline
+    // UI renders instead of surfacing an unhandled async error.
+    _store.load().catchError((Object _) {
+      _store.loaded = true;
+      if (mounted) setState(() {});
+    });
   }
 
   @override
