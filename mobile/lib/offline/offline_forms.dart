@@ -126,7 +126,7 @@ class _AccountFormScreenState extends State<AccountFormScreen> {
           ),
           const SizedBox(height: 16),
           DropdownButtonFormField<String>(
-            initialValue: _type,
+            value: _type,
             decoration: const InputDecoration(labelText: 'Type'),
             items: accountTypeLabels.entries
                 .map(
@@ -330,7 +330,7 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
           ),
           const SizedBox(height: 16),
           DropdownButtonFormField<String>(
-            initialValue: _accountId,
+            value: _accountId,
             decoration: const InputDecoration(labelText: 'Account'),
             items: accounts
                 .map(
