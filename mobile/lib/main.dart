@@ -12,6 +12,7 @@ import 'providers/chat_provider.dart';
 import 'providers/theme_provider.dart';
 import 'providers/privacy_provider.dart';
 import 'screens/backend_config_screen.dart';
+import 'offline/offline_home_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/biometric_lock_screen.dart';
 import 'screens/main_navigation_screen.dart';
@@ -114,7 +115,9 @@ class SureApp extends StatelessWidget {
             '/login': (context) => const LoginScreen(),
             '/home': (context) => const MainNavigationScreen(),
           },
-          home: const AppWrapper(),
+          // Offline build: no server URL, no login. The app opens straight
+          // into the local tracker; all data lives on the device.
+          home: const OfflineHomeScreen(),
         ),
       ),
     );
